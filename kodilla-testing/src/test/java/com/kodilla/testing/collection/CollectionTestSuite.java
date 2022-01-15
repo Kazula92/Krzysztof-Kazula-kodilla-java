@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.BeforeClass;
-import com.kodilla.testing.collection.OddNumbersExterminator;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
