@@ -34,42 +34,46 @@ public class ShapeCollectorTestSuite {
         @Test
         void testAddFigure() {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector();
-            Shape shape = new Circle(10);
+            ArrayList<Shape> shapeCollector = new ArrayList<Shape>();
+            ShapeCollector collector = new ShapeCollector(shapeCollector);
 
             //When
-            shapeCollector.addFigure(shape);
+            Shape shape = new Circle(10);
+            collector.addFigure(shape);
 
             //Then
-            assertEquals(1, shapeCollector.getShapeCollector().size());
+            assertEquals(1, shapeCollector.size());
         }
 
         @DisplayName("Checks for removing figures from the collection")
         @Test
         void testRemoveFigure() {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector();
+            ArrayList<Shape> shapeCollector = new ArrayList<>();
+            ShapeCollector collector = new ShapeCollector(shapeCollector);
             Shape shape = new Circle(10);
-            shapeCollector.addFigure(shape);
+            collector.addFigure(shape);
+            collector.addFigure(shape);
 
             //When
-            boolean result = shapeCollector.removeFigure(shape);
+            boolean result = collector.removeFigure(shape);
 
             //Then
             assertTrue(result);
-            assertEquals(0, shapeCollector.getShapeCollector().size());
+            assertEquals(1, shapeCollector.size());
         }
 
         @DisplayName("Checks the fetch from the figure collection")
         @Test
         void testGetFigure() {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector();
-            Shape shape = new Circle(10);
-            shapeCollector.addFigure(shape);
+            ArrayList<Shape> shapeCollector = new ArrayList<Shape>();
+            ShapeCollector collector = new ShapeCollector(shapeCollector);
 
             //When
-            Shape shapeResult = shapeCollector.getFigure(0);
+            Shape shape = new Circle(10);
+            collector.addFigure(shape);
+            Shape shapeResult = collector.getFigure(0);
 
             //Then
             assertEquals(shape, shapeResult);
@@ -79,32 +83,31 @@ public class ShapeCollectorTestSuite {
         @Test
         public void testRemoveFigureNotExisting() {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector();
-            shapeCollector.addFigure(new Circle(11));
+            ArrayList<Shape> shapeCollector = new ArrayList<Shape>();
+            ShapeCollector collector = new ShapeCollector(shapeCollector);
+            Shape shape = new Circle(10);
 
             //When
-            boolean result = shapeCollector.removeFigure(new Circle(10));
+            boolean result = collector.removeFigure(shape);
 
             //Then
             assertFalse(result);
-            assertEquals(1, shapeCollector.getShapeCollector().size());
         }
 
         @DisplayName("Checks the return of the name of all figures")
         @Test
         public void testShowFigure() {
             //Given
-            ShapeCollector shapeCollector = new ShapeCollector();
+            ArrayList<Shape> shapeCollector = new ArrayList<>();
+            ShapeCollector collector = new ShapeCollector(shapeCollector);
             Shape shape = new Circle(10);
-            shapeCollector.addFigure(shape);
-            ArrayList<Shape> shapeList = new ArrayList<>();
-            shapeList.add(shape);
+            collector.addFigure(shape);
 
             //When
-            List<Shape> shapeResultList = shapeCollector.getShapeCollector();
+            int result = collector.showFigures();
 
             //Then
-            assertEquals(shapeList.toString(), shapeResultList.toString());
+            assertEquals(1, result);
         }
     }
 }

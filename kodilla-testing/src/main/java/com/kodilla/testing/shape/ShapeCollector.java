@@ -3,12 +3,16 @@ package com.kodilla.testing.shape;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.swing.UIManager.get;
+
 public class ShapeCollector {
+
+    public int showedFiguresCounter = 0;
 
     private List<Shape> shapeCollector = new ArrayList<>();
 
-    public List<Shape> getShapeCollector() {
-        return shapeCollector;
+    public ShapeCollector(ArrayList<Shape> shapeCollector) {
+        this.shapeCollector = shapeCollector;
     }
 
     public void addFigure(Shape shape){
@@ -16,19 +20,28 @@ public class ShapeCollector {
     }
 
     public boolean removeFigure(Shape shape){
-        return shapeCollector.remove(shape);
+        boolean result = false;
+        if(shapeCollector.contains(shape)){
+            shapeCollector.remove(shape);
+            result = true;
+        }
+        return result;
     }
 
     public Shape getFigure(int n){
-        if(n<shapeCollector.size() && n>=0){
-            return shapeCollector.get(n);
-        }else{
-            return null;
+        Shape shape = null;
+        if(n<shapeCollector.size() && n>=0) {
+            shape = shapeCollector.get(n);
         }
-    }
+            return shape;
+        }
 
-    public void showFigure(){
-        System.out.println(shapeCollector.toString());
+    public int showFigures(){
+        for (Shape showedFigure : shapeCollector) {
+            System.out.println("Figure: " + showedFigure.getShapeName());
+            showedFiguresCounter++;
+        }
+        return showedFiguresCounter;
     }
-
 }
+
