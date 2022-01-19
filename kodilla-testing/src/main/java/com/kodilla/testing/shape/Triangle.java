@@ -6,6 +6,12 @@ public class Triangle implements Shape {
     private double baseLength;
     private double heightLength;
 
+    public Triangle(String name, double baseLength, double heightLength) {
+        this.name = name;
+        this.baseLength = baseLength;
+        this.heightLength = heightLength;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,5 +44,10 @@ public class Triangle implements Shape {
     @Override
     public double getField() {
         return Math.sqrt((baseLength * heightLength)/2);
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

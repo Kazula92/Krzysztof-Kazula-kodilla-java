@@ -38,7 +38,7 @@ public class ShapeCollectorTestSuite {
             ShapeCollector collector = new ShapeCollector(shapeCollector);
 
             //When
-            Shape shape = new Circle(10);
+            Shape shape = new Circle("Circle", 10);
             collector.addFigure(shape);
 
             //Then
@@ -51,7 +51,7 @@ public class ShapeCollectorTestSuite {
             //Given
             ArrayList<Shape> shapeCollector = new ArrayList<>();
             ShapeCollector collector = new ShapeCollector(shapeCollector);
-            Shape shape = new Circle(10);
+            Shape shape = new Circle("Circle", 10);
             collector.addFigure(shape);
             collector.addFigure(shape);
 
@@ -71,7 +71,7 @@ public class ShapeCollectorTestSuite {
             ShapeCollector collector = new ShapeCollector(shapeCollector);
 
             //When
-            Shape shape = new Circle(10);
+            Shape shape = new Circle("Circle", 10);
             collector.addFigure(shape);
             Shape shapeResult = collector.getFigure(0);
 
@@ -85,7 +85,7 @@ public class ShapeCollectorTestSuite {
             //Given
             ArrayList<Shape> shapeCollector = new ArrayList<Shape>();
             ShapeCollector collector = new ShapeCollector(shapeCollector);
-            Shape shape = new Circle(10);
+            Shape shape = new Circle("Circle", 10);
 
             //When
             boolean result = collector.removeFigure(shape);
@@ -100,14 +100,18 @@ public class ShapeCollectorTestSuite {
             //Given
             ArrayList<Shape> shapeCollector = new ArrayList<>();
             ShapeCollector collector = new ShapeCollector(shapeCollector);
-            Shape shape = new Circle(10);
-            collector.addFigure(shape);
+            Shape circle = new Circle("Circle", 10);
+            Shape triangle = new Triangle("Triangle", 5.0, 7.0);
+            Shape square = new Square("Square", 4.0);
+            collector.addFigure(circle);
+            collector.addFigure(triangle);
+            collector.addFigure(square);
 
             //When
-            int result = collector.showFigures();
+            String showString = collector.showFigures();
 
             //Then
-            assertEquals(1, result);
+            assertEquals(circle.toString() + triangle.toString() +square.toString() ,showString);
         }
     }
 }

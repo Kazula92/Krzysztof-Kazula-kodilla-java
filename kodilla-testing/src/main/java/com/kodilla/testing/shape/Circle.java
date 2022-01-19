@@ -7,7 +7,8 @@ public class Circle implements Shape {
     private String name = "Circle";
     private double radius;
 
-    public Circle(double radius) {
+    public Circle(String name, double radius) {
+        this.name = name;
         this.radius = radius ;
     }
 
@@ -40,5 +41,10 @@ public class Circle implements Shape {
     @Override
     public double getField() {
         return Math.PI * Math.pow(radius, 2);
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

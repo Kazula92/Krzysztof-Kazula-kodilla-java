@@ -36,12 +36,12 @@ public class ShapeCollector {
             return shape;
         }
 
-    public int showFigures(){
+    public String showFigures(){
+        StringBuilder figures = new StringBuilder();
         for (Shape showedFigure : shapeCollector) {
-            System.out.println("Figure: " + showedFigure.getShapeName());
-            showedFiguresCounter++;
+            figures.append(showedFigure.toString());
         }
-        return showedFiguresCounter;
+        return figures.toString();
     }
 }
 

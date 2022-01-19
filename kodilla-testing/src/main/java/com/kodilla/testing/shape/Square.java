@@ -5,6 +5,11 @@ public class Square implements Shape {
     private String name = "Square";
     private double sideLength;
 
+    public Square(String name, double sideLength) {
+        this.name = name;
+        this.sideLength = sideLength;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -28,11 +33,18 @@ public class Square implements Shape {
 
     @Override
     public String getShapeName(){
+
         return name;
     }
 
     @Override
     public double getField() {
+
         return Math.pow(sideLength, 2);
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }
