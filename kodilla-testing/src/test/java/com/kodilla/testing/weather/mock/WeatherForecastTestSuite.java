@@ -51,8 +51,8 @@ public class WeatherForecastTestSuite {
         double averageTemp = weatherForecast.averageTemperatures();
 
         //Then
-        double averageTestTemp = ((25.5 + 26.4 + 24.8 + 25.1 + 23.5)/5);
-        assertEquals(averageTestTemp, averageTemp);
+        double averageTestTemp = ((25.5 + 26.4 + 24.8 + 25.1 + 23.5)/5.0);
+        assertEquals(25.0, averageTemp);
     }
 
     @Test
