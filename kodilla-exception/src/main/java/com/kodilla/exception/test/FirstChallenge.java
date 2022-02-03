@@ -12,7 +12,7 @@ public class FirstChallenge {
     public static void main(String[] args) {
 
         FirstChallenge firstChallenge = new FirstChallenge();
-        boolean ifSucceed = true;
+        boolean ifSucceed = false;
 
         try {
             double result = firstChallenge.divide(3, 0);
