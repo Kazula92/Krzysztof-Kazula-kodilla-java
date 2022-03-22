@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.food;
 
-import com.kodilla.good.patterns.challenges.*;
-
 public class FoodApp {
 
     public static void main(String[] args) {

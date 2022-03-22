@@ -1,7 +1,6 @@
 package com.kodilla.good.patterns.food;
 
 public class FoodProducer implements Producer {
-
     String producerName;
 
     public FoodProducer(String producerName) {

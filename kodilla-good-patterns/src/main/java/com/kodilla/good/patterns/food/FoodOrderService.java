@@ -2,9 +2,9 @@ package com.kodilla.good.patterns.food;
 
 public class FoodOrderService {
 
-    private FoodProducer foodProducer;
-    private String foodQuantity;
-    private String foodType;
+    private final FoodProducer foodProducer;
+    private final String foodQuantity;
+    private final String foodType;
 
     public FoodOrderService(final FoodProducer foodProducer, final String foodQuantity, final String foodType) {
         this.foodProducer = foodProducer;

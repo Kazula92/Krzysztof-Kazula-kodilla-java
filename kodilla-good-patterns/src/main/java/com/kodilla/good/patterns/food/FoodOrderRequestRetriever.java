@@ -1,6 +1,5 @@
 package com.kodilla.good.patterns.food;
 
-
 public class FoodOrderRequestRetriever {
 
     public FoodOrderService retrieve() {

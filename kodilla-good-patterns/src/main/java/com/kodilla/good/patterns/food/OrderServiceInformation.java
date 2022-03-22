@@ -9,6 +9,5 @@ public class OrderServiceInformation {
         } else {
             System.out.println("The order has not been placed");
         }
-
     }
 }
