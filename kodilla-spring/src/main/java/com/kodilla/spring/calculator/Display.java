@@ -1,8 +1,8 @@
 package com.kodilla.spring.calculator;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public final class Display {
 
     public double displayValue(double val){

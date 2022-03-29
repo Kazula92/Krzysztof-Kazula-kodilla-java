@@ -20,5 +20,4 @@ class CalculatorTestSuite {
         calculator.div(3.5,0.5);
         //Then
     }
-
 }
