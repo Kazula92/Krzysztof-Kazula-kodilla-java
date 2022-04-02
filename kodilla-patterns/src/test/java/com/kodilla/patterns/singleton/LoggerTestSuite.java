@@ -7,22 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoggerTestSuite {
 
-    private static Logger logger;
-
-    @BeforeAll
-    public static void loggerTest () {
-        logger = Logger.INSTANCE;
-        logger.log("logger");
-
-    }
-
     @Test
-    void testLastLog () {
-        //Given
-        //When
-        String lastLog = logger.getLastLog();
-        System.out.println("Opened test: " + lastLog);
-        //Then
-        assertEquals("logger", lastLog);
+    void testGetLastLog() {
+        //given
+        Logger logger = Logger.INSTANCE;
+
+        //when
+        logger.log("Test");
+        String result = logger.getLastLog();
+
+        //then
+        assertEquals("Test", result);
     }
 }
