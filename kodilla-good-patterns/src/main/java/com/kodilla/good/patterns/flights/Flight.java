@@ -1,25 +1,18 @@
 package com.kodilla.good.patterns.flights;
 
-import java.util.Optional;
 
 public final class Flight {
 
     private final String departureCity;
-    private final Optional<String> intermediateCity;
     private final String arrivalCity;
 
-    public Flight(String departureCity, Optional<String> intermediateCity, String arrivalCity) {
+    public Flight(String departureCity, String arrivalCity) {
         this.departureCity = departureCity;
-        this.intermediateCity = intermediateCity;
         this.arrivalCity = arrivalCity;
     }
 
     public String getDepartureCity() {
         return departureCity;
-    }
-
-    public Optional<String> getIntermediateCity() {
-        return intermediateCity;
     }
 
     public String getArrivalCity() {
@@ -34,14 +27,12 @@ public final class Flight {
         Flight flight = (Flight) o;
 
         if (!departureCity.equals(flight.departureCity)) return false;
-        if (!intermediateCity.equals(flight.intermediateCity)) return false;
         return arrivalCity.equals(flight.arrivalCity);
     }
 
     @Override
     public int hashCode() {
         int result = departureCity.hashCode();
-        result = 31 * result + intermediateCity.hashCode();
         result = 31 * result + arrivalCity.hashCode();
         return result;
     }
@@ -50,7 +41,6 @@ public final class Flight {
     public String toString() {
         return "Flight{" +
                 "departureCity='" + departureCity + '\'' +
-                ", intermediateCity=" + intermediateCity +
                 ", arrivalCity='" + arrivalCity + '\'' +
                 '}';
     }
