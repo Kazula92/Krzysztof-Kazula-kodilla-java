@@ -21,7 +21,6 @@ public class DrivingTask implements Tasks{
             System.out.println("Tasks " + taskName + " was NOT completed...");
             taskDone =true;
         }
-
     }
 
     @Override

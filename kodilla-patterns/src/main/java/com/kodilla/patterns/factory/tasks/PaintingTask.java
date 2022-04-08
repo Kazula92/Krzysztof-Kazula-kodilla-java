@@ -1,5 +1,6 @@
 package com.kodilla.patterns.factory.tasks;
 
+
 public class PaintingTask implements Tasks{
 
     private final String taskName;
