@@ -7,12 +7,13 @@ public class FlightSet {
 
     private final Set<Flight> flightSet = new HashSet<>();
 
-    public Set<Flight> flightSet() {
-        flightSet.add(new Flight("Katowice", "Gdansk"));
-        flightSet.add(new Flight("Lodz", "Londyn"));
-        flightSet.add(new Flight("Krakow", "Poznan"));
-        flightSet.add(new Flight("Rzeszow", "Poznan"));
+    public boolean addFlight (Flight flight) {
+        flightSet.add(flight);
+        return true;
+    }
 
+    public Set<Flight> getFlightSet() {
         return flightSet;
     }
+
 }

@@ -4,10 +4,11 @@ public class FlightApp {
 
     public static void main(String[] args) {
 
-        FlightSearch flightSearch = new FlightSearch();
+        FlightSet flightSet = FlightList.retrieve();
 
+        FlightSearch flightSearch = new FlightSearch(flightSet.getFlightSet());
         flightSearch.searchFlightFromCity("Katowice");
         flightSearch.searchFlightToCity("Gdansk");
-        flightSearch.findConnectingFlight("Lodz","Gdansk","Katowice");
+        flightSearch.findConnectingFlight("Katowice", "Lodz", "Gdansk");
     }
 }
