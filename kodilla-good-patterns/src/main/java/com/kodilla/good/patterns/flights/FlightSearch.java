@@ -1,47 +1,37 @@
 package com.kodilla.good.patterns.flights;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class FlightSearch {
 
-    private final Set<Flight> listFlight;
-
-    public FlightSearch(Set<Flight> listFlight) {
-        this.listFlight = listFlight;
-    }
+    FlightList searchFlightFromCity = new FlightList();
+    FlightList searchFlightToCity = new FlightList();
+    FlightList findConnectingFlight = new FlightList();
 
 
     public void searchFlightFromCity(String departureCity) {
         System.out.println("\nDeparture from: " + departureCity);
-        listFlight.stream()
-                .filter(s -> s.getDepartureCity().equals(departureCity))
-                .map(s->s.toString())
+        searchFlightFromCity.flightList0().stream()
+                .filter(s -> Objects.equals(s.getDepartureCity(), departureCity))
                 .forEach(System.out::println);
-        System.out.println();
     }
 
     public void searchFlightToCity(String arrivalCity) {
         System.out.println("\nArrival to: " + arrivalCity);
-        listFlight.stream()
-                .filter(s -> s.getArrivalCity().equals(arrivalCity))
-                .map(s->s.toString())
+        searchFlightToCity.flightList0().stream()
+                .filter(s -> Objects.equals(s.getArrivalCity(), arrivalCity))
                 .forEach(System.out::println);
-        System.out.println();
     }
 
-    public void findConnectingFlight (String departureCity, String transferInTheCity, String arrivalCity) {
+    public void findConnectingFlight (String transferInTheCity) {
 
-        System.out.println("\nDeparture from: " + departureCity + " to " + arrivalCity
-                + " with a change in: " + transferInTheCity);
-        List<Flight> connectingFlights = listFlight.stream()
-                .filter(s->s.getDepartureCity().equals(departureCity) && s.getArrivalCity().equals(transferInTheCity))
-                .collect(Collectors.toList());
-        listFlight.stream()
-                .filter(s->s.getDepartureCity().equals(transferInTheCity) && s.getArrivalCity().equals(arrivalCity))
-                .collect(Collectors.toCollection(()->connectingFlights));
-        connectingFlights.stream()
+        findConnectingFlight.flightList3().entrySet()
+                .stream().filter(t -> Objects.equals(t.getValue(), transferInTheCity))
+                .map(entry -> "\nDeparture from " + entry.getKey().getDepartureCity()
+                        + " to " + entry.getKey().getArrivalCity() + " by " + transferInTheCity + " exist.")
                 .forEach(System.out::println);
     }
 }

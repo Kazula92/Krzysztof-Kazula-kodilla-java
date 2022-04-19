@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns.flights;
 
 
+import java.util.Objects;
+
 public final class Flight {
 
     private final String departureCity;
@@ -26,15 +28,12 @@ public final class Flight {
 
         Flight flight = (Flight) o;
 
-        if (!departureCity.equals(flight.departureCity)) return false;
-        return arrivalCity.equals(flight.arrivalCity);
+        return Objects.equals(departureCity, flight.departureCity) && Objects.equals(arrivalCity, flight.arrivalCity);
     }
 
     @Override
     public int hashCode() {
-        int result = departureCity.hashCode();
-        result = 31 * result + arrivalCity.hashCode();
-        return result;
+        return Objects.hash(departureCity, arrivalCity);
     }
 
     @Override

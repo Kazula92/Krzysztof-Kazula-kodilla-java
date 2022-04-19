@@ -1,31 +1,31 @@
 package com.kodilla.good.patterns.flights;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class FlightList {
 
-    public static FlightSet retrieve() {
+    private final List<Flight> flightList = new ArrayList<>();
+    private final HashMap<Flight, String> flightList2 = new HashMap<>();
 
-        Flight flight1 = new Flight("Katowice", "Gdansk");
-        Flight flight1a = new Flight("Katowice", "Lodz");
-        Flight flight1b = new Flight("Lodz", "Gdansk");
-        Flight flight2 = new Flight("Lodz", "Londyn");
-        Flight flight3 = new Flight("Krakow", "Poznan");
-        Flight flight4 = new Flight("Rzeszow", "Poznan");
-        Flight flight5 = new Flight("Rzeszow", "Krakow");
-        Flight flight6 = new Flight("Krakow", "Poznan");
+    public List<Flight> flightList0 () {
+        flightList.add(new Flight("Katowice", "Gdansk"));
+        flightList.add(new Flight("Katowice", "Szczecin"));
+        flightList.add(new Flight("Katowice", "Warszawa"));
+        flightList.add(new Flight("Krakow", "Gdansk"));
+        flightList.add(new Flight("Rzeszow", "Szczecin"));
 
-        FlightSet flightS = new FlightSet();
-
-        flightS.addFlight(flight1);
-        flightS.addFlight(flight1a);
-        flightS.addFlight(flight1b);
-        flightS.addFlight(flight2);
-        flightS.addFlight(flight3);
-        flightS.addFlight(flight4);
-        flightS.addFlight(flight5);
-        flightS.addFlight(flight6);
-
-        return flightS;
+        return flightList;
     }
 
+    public HashMap<Flight, String> flightList3 () {
 
+        flightList2.put(new Flight("Katowice", "Gdansk"), "Warszawa");
+        flightList2.put(new Flight("Katowice", "Szczecin"), "Poznan");
+        flightList2.put(new Flight("Krakow", "Gdansk"), "Poznan");
+        flightList2.put(new Flight("Rzeszow", "Szczecin"), "Warszawa");
+
+        return flightList2;
+    }
 }
