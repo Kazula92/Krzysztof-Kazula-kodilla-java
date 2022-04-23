@@ -1,15 +1,15 @@
 package com.kodilla.hibernate.tasklist.dao;
 
+
 import com.kodilla.hibernate.tasklist.TaskList;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TaskListDaoTestSuite {
@@ -28,10 +28,11 @@ class TaskListDaoTestSuite {
         //When
         List<TaskList> listTask= taskListDao.findByListName(listName);
         //Then
-        assertEquals(3, listTask.size());
+        assertEquals(1, listTask.size());
 
         //CleanUp
         int id = listTask.get(0).getId();
         taskListDao.deleteById(id);
     }
+
 }

@@ -1,8 +1,10 @@
 package com.kodilla.hibernate.tasklist;
 
+
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "TASKLISTS")
@@ -49,4 +51,5 @@ public class TaskList {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
