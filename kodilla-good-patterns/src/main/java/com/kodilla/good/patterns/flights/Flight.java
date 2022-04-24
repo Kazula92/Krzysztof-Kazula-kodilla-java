@@ -1,23 +1,28 @@
 package com.kodilla.good.patterns.flights;
 
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public final class Flight {
 
     private final String departureCity;
-    private final String arrivalCity;
+    private final Set<Flight> arrivalCity= new HashSet<>();
 
-    public Flight(String departureCity, String arrivalCity) {
+    public Flight(String departureCity) {
         this.departureCity = departureCity;
-        this.arrivalCity = arrivalCity;
+    }
+
+    public void addArrival(Flight flight) {
+        arrivalCity.add(flight);
     }
 
     public String getDepartureCity() {
         return departureCity;
     }
 
-    public String getArrivalCity() {
+    public Set<Flight> getArrivalCity() {
         return arrivalCity;
     }
 
@@ -28,19 +33,16 @@ public final class Flight {
 
         Flight flight = (Flight) o;
 
-        return Objects.equals(departureCity, flight.departureCity) && Objects.equals(arrivalCity, flight.arrivalCity);
+        return getDepartureCity().equals(flight.getDepartureCity());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(departureCity, arrivalCity);
+        return Objects.hash(getDepartureCity());
     }
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "departureCity='" + departureCity + '\'' +
-                ", arrivalCity='" + arrivalCity + '\'' +
-                '}';
+        return departureCity;
     }
 }

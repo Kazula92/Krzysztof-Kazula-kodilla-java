@@ -1,31 +1,55 @@
 package com.kodilla.good.patterns.flights;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class FlightList {
 
-    private final List<Flight> flightList = new ArrayList<>();
-    private final HashMap<Flight, String> flightList2 = new HashMap<>();
+    private final Set<Flight> flightSet;
 
-    public List<Flight> flightList0 () {
-        flightList.add(new Flight("Katowice", "Gdansk"));
-        flightList.add(new Flight("Katowice", "Szczecin"));
-        flightList.add(new Flight("Katowice", "Warszawa"));
-        flightList.add(new Flight("Krakow", "Gdansk"));
-        flightList.add(new Flight("Rzeszow", "Szczecin"));
+    public FlightList() {
 
-        return flightList;
+        flightSet= new HashSet<>();
+
+        Flight katowice= new Flight("Katowice");
+        Flight gdansk= new Flight("Gdansk");
+        Flight warszawa= new Flight("Warszawa");
+        Flight krakow= new Flight("Krakow");
+        Flight szczecin= new Flight("Szczecin");
+        Flight rzeszow= new Flight("Rzeszow");
+
+        katowice.addArrival(gdansk);
+        katowice.addArrival(warszawa);
+        katowice.addArrival(krakow);
+
+        gdansk.addArrival(warszawa);
+        gdansk.addArrival(krakow);
+        gdansk.addArrival(szczecin);
+
+        warszawa.addArrival(krakow);
+        warszawa.addArrival(szczecin);
+        warszawa.addArrival(rzeszow);
+
+        krakow.addArrival(szczecin);
+        krakow.addArrival(rzeszow);
+        krakow.addArrival(katowice);
+
+        szczecin.addArrival(rzeszow);
+        szczecin.addArrival(katowice);
+        szczecin.addArrival(gdansk);
+
+        rzeszow.addArrival(katowice);
+        rzeszow.addArrival(gdansk);
+        rzeszow.addArrival(warszawa);
+
+        flightSet.add(katowice);
+        flightSet.add(gdansk);
+        flightSet.add(warszawa);
+        flightSet.add(krakow);
+        flightSet.add(szczecin);
+        flightSet.add(rzeszow);
     }
 
-    public HashMap<Flight, String> flightList3 () {
-
-        flightList2.put(new Flight("Katowice", "Gdansk"), "Warszawa");
-        flightList2.put(new Flight("Katowice", "Szczecin"), "Poznan");
-        flightList2.put(new Flight("Krakow", "Gdansk"), "Poznan");
-        flightList2.put(new Flight("Rzeszow", "Szczecin"), "Warszawa");
-
-        return flightList2;
+    public Set<Flight> getFlightSet() {
+        return flightSet;
     }
 }

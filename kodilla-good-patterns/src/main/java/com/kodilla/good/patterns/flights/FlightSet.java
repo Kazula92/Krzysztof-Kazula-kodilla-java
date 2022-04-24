@@ -1,19 +1,22 @@
 package com.kodilla.good.patterns.flights;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class FlightSet {
 
-    private final Set<Flight> flightSet = new HashSet<>();
+    private Set<Flight> flightSet;
+    private String info;
 
-    public boolean addFlight (Flight flight) {
-        flightSet.add(flight);
-        return true;
+    public FlightSet(Set<Flight> flightSet, String info) {
+        this.flightSet = flightSet;
+        this.info = info;
     }
 
     public Set<Flight> getFlightSet() {
         return flightSet;
     }
 
+    public String getInfo() {
+        return info;
+    }
 }
