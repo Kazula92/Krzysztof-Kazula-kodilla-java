@@ -9,7 +9,7 @@ import java.util.Date;
 @NamedQueries ({
 @NamedQuery(
         name = "Tasks.retrieveLongTasks",
-        query = "FROM Tasks WHERE duration > 10"
+        query = "FROM Task WHERE duration > 10"
 ),
 @NamedQuery(
         name = "Task.retrieveShortTasks",
@@ -18,7 +18,8 @@ import java.util.Date;
         })
 @NamedNativeQuery(
         name= "Tasks.retrieveTasksWithEnoughTime",
-        query = "SELECT * FROM TASKS" + "WHERE DATEDIFF(DATE_ADD(CREATED,INTERVAL DURATION DAY), NOW()) > 5",
+        query = "SELECT * FROM TASKS" +
+                " WHERE DATEDIFF(DATE_ADD(CREATED, INTERVAL DURATION DAY), NOW()) > 5",
         resultClass = Task.class
 )
 
