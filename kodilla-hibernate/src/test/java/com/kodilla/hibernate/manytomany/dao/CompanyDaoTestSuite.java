@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -13,6 +16,9 @@ class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -51,12 +57,53 @@ class CompanyDaoTestSuite {
         assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        //try {
-        //    companyDao.deleteById(softwareMachineId);
-        //    companyDao.deleteById(dataMaestersId);
-        //    companyDao.deleteById(greyMatterId);
-        //} catch (Exception e) {
-        //    //do nothing
-        //}
+        try {
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
+        } catch (Exception e) {
+            //do nothing
+        }
+    }
+
+    @Test
+    void testQueriesFindByMethod1() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Company softwareMachine = new Company("Software Machine");
+        softwareMachine.getEmployees().add(johnSmith);
+        johnSmith.getCompanies().add(softwareMachine);
+
+        //When
+        employeeDao.save(johnSmith);
+        int johnSmithId= johnSmith.getId();
+        List<Employee> employeeLastName= employeeDao.retrieveEmployeeLastName("Smith");
+
+        //Then
+        assertEquals(1, employeeLastName.size());
+
+        //CleanUp
+        employeeDao.deleteById(johnSmithId);
+    }
+
+    @Test
+    void testQueriesFindByMethod2() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Company softwareMachine = new Company("Software Machine");
+
+        softwareMachine.getEmployees().add(johnSmith);
+        johnSmith.getCompanies().add(softwareMachine);
+
+        //When
+        companyDao.save(softwareMachine);
+        int softwareMachineId= softwareMachine.getId();
+        List<Company> companiesName= companyDao.retrieveCompaniesByFirstThreeLetters("Sof");
+
+        //Then
+        assertEquals(1,companiesName.size());
+
+        //CleanUp
+        companyDao.deleteById(softwareMachineId);
     }
 }
